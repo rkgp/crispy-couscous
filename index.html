@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jorrit van der Veen | Coming Soon</title>
+    <title>Jorrit van der Veen | Data Analyst</title>
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
@@ -66,51 +66,6 @@
             font-size: 1.1rem;
         }
         
-        /* Construction notice */
-        .under-construction {
-            margin-top: 40px;
-            padding: 20px;
-            border: 1px solid #000;
-            text-align: center;
-            position: relative;
-            background: repeating-linear-gradient(
-                45deg,
-                #fff,
-                #fff 10px,
-                #f9f9f9 10px,
-                #f9f9f9 20px
-            );
-        }
-        
-        .under-construction::before,
-        .under-construction::after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border: 1px solid #000;
-            background-color: #fff;
-        }
-        
-        .under-construction::before {
-            top: -10px;
-            left: -10px;
-            transform: rotate(45deg);
-        }
-        
-        .under-construction::after {
-            bottom: -10px;
-            right: -10px;
-            transform: rotate(45deg);
-        }
-        
-        .under-construction h2 {
-            font-weight: normal;
-            margin-top: 0;
-        }
-        
-        /* Progress bar removed */
-        
         /* Profile section */
         .profile-section {
             margin: 40px 0;
@@ -133,13 +88,12 @@
             overflow: hidden;
         }
         
-        
         .bio-text {
             border-left: 3px solid #000;
             padding-left: 20px;
         }
         
-        /* Skills */
+        /* Skills - ENHANCED WITH ANIMATIONS */
         .skills-section {
             margin: 30px 0;
         }
@@ -163,13 +117,37 @@
             border: 1px solid #000;
             padding: 5px 10px;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+            animation-delay: calc(var(--order) * 0.1s);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .skill-tag:hover {
             background-color: #000;
             color: #fff;
-            transform: translateY(-2px);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        
+        /* Pulse animation for focus */
+        .skill-tag:active {
+            animation: pulse 0.3s;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1.05); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
         }
         
         /* Experience */
@@ -370,10 +348,9 @@
         </header>
         
         <main>
-            <!-- Construction notice removed -->
             <div class="profile-section">
                 <div class="profile-image">
-                        <img src="https://raw.githubusercontent.com/rkgp/crispy-couscous/main/images/JvdV.jpeg" alt="Jorrit van der Veen" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="https://raw.githubusercontent.com/rkgp/crispy-couscous/main/images/JvdV.jpeg" alt="Jorrit van der Veen" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 
                 <div class="bio-text">
@@ -386,16 +363,16 @@
             <div class="skills-section">
                 <h3>CORE COMPETENCIES</h3>
                 <div class="skills">
-                    <span class="skill-tag">Power BI</span>
-                    <span class="skill-tag">Data Analysis</span>
-                    <span class="skill-tag">Excel</span>
-                    <span class="skill-tag">Business Intelligence</span>
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Process Improvement</span>
-                    <span class="skill-tag">Lean Six Sigma Green Belt</span>
-                    <span class="skill-tag">KPI Reporting</span>
-                    <span class="skill-tag">Google Analytics</span>
+                    <span class="skill-tag" style="--order: 1">Power BI</span>
+                    <span class="skill-tag" style="--order: 2">Data Analysis</span>
+                    <span class="skill-tag" style="--order: 3">Excel</span>
+                    <span class="skill-tag" style="--order: 4">Business Intelligence</span>
+                    <span class="skill-tag" style="--order: 5">SQL</span>
+                    <span class="skill-tag" style="--order: 6">Python</span>
+                    <span class="skill-tag" style="--order: 7">Process Improvement</span>
+                    <span class="skill-tag" style="--order: 8">Lean Six Sigma Green Belt</span>
+                    <span class="skill-tag" style="--order: 9">KPI Reporting</span>
+                    <span class="skill-tag" style="--order: 10">Google Analytics</span>
                 </div>
             </div>
             
@@ -423,5 +400,33 @@
             <p>&copy; 2025 | Jorrit van der Veen</p>
         </footer>
     </div>
+
+    <!-- Script for animated skills -->
+    <script>
+        // Intersection Observer to trigger animations when scrolled into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Reset animations when scrolled into view
+                        const skillTags = entry.target.querySelectorAll('.skill-tag');
+                        skillTags.forEach((tag, index) => {
+                            tag.style.animation = 'none';
+                            tag.offsetHeight; // Trigger reflow
+                            tag.style.animation = `fadeInUp 0.5s forwards ${index * 0.1}s`;
+                        });
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+            
+            // Observe the skills section
+            const skillsSection = document.querySelector('.skills-section');
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            }
+        });
+    </script>
 </body>
 </html>
