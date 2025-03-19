@@ -173,6 +173,175 @@
             font-weight: normal;
         }
         
+        /* Portfolio Section Styles */
+        .portfolio-section {
+            margin: 50px 0;
+            position: relative;
+        }
+        
+        .portfolio-section h3 {
+            font-weight: normal;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #000;
+        }
+        
+        .section-intro {
+            margin-bottom: 30px;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            border: 1px solid #000;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInPortfolio 0.8s forwards;
+            animation-delay: calc(var(--item-order) * 0.2s);
+        }
+        
+        @keyframes fadeInPortfolio {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .portfolio-preview {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .portfolio-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #000;
+        }
+        
+        .placeholder-text {
+            padding: 10px 15px;
+            border: 1px dashed #000;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .portfolio-details {
+            padding: 20px;
+        }
+        
+        .portfolio-details h4 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+        
+        .project-description {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .project-tag {
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border: 1px solid #000;
+            background-color: #fff;
+        }
+        
+        /* Company name styling */
+        .company-name {
+            font-size: 0.85rem;
+            margin: 0 0 12px 0;
+            display: inline-block;
+            border-bottom: 1px dashed #000;
+            padding-bottom: 2px;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Add animation for each portfolio item */
+        .portfolio-item:nth-child(1) {
+            --item-order: 1;
+        }
+        
+        .portfolio-item:nth-child(2) {
+            --item-order: 2;
+        }
+        
+        .portfolio-item:nth-child(3) {
+            --item-order: 3;
+        }
+        
+        .portfolio-item:nth-child(4) {
+            --item-order: 4;
+        }
+        
+        /* Responsive styles for portfolio section */
+        @media (min-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .portfolio-item {
+                margin-bottom: 20px;
+            }
+            
+            .portfolio-image {
+                height: 180px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .portfolio-section {
+                margin: 30px 0;
+            }
+            
+            .portfolio-image {
+                height: 150px;
+            }
+            
+            .portfolio-details {
+                padding: 15px;
+            }
+            
+            .project-description {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Remove arrow hover effect */
+        
+        .portfolio-item:hover .image-placeholder {
+            filter: brightness(0.9);
+        }
+        
         /* Contact */
         .contact-info {
             margin-top: 40px;
@@ -387,6 +556,98 @@
                 </ul>
             </div>
             
+            <!-- PORTFOLIO SECTION - Added after Experience Highlight section -->
+            <div class="portfolio-section">
+                <h3>SELECTED PROJECTS</h3>
+                <p class="section-intro">A showcase of data analysis, visualization, and business intelligence projects I've completed.</p>
+                
+                <div class="portfolio-grid">
+                    <!-- Project 1 -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-preview">
+                            <div class="portfolio-image">
+                                <div class="image-placeholder">
+                                    <span class="placeholder-text">MACHINE LEARNING</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-details">
+                            <h4>User Segmentation Analysis</h4>
+                            <p class="company-name">Staffyou</p>
+                            <p class="project-description">Implemented K-means clustering algorithms to categorize user groups based on behavior patterns, enabling targeted marketing strategies and increasing conversion rates by 27%.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Machine Learning</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Data Clustering</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-preview">
+                            <div class="portfolio-image">
+                                <div class="image-placeholder">
+                                    <span class="placeholder-text">PDF EXTRACTION</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-details">
+                            <h4>PDF Data Extraction Tool</h4>
+                            <p class="company-name">KPN</p>
+                            <p class="project-description">Developed a Python automation solution that extracts critical information from thousands of readable and scanned PDFs, reducing manual processing time by 85% and improving data accuracy.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">OCR</span>
+                                <span class="project-tag">Process Automation</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-preview">
+                            <div class="portfolio-image">
+                                <div class="image-placeholder">
+                                    <span class="placeholder-text">PROCUREMENT DASHBOARDS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-details">
+                            <h4>Enterprise Procurement Analytics Suite</h4>
+                            <p class="company-name">KPN</p>
+                            <p class="project-description">Created a suite of interactive dashboards providing over 200 users with comprehensive insights into spend analytics, supplier performance, category management, and contract compliance.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Power BI</span>
+                                <span class="project-tag">SQL</span>
+                                <span class="project-tag">Data Visualization</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-preview">
+                            <div class="portfolio-image">
+                                <div class="image-placeholder">
+                                    <span class="placeholder-text">FORECAST MODEL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-details">
+                            <h4>Seasonal Buying Forecast Model</h4>
+                            <p class="company-name">Tumble 'N Dry</p>
+                            <p class="project-description">Engineered an Excel-based forecasting model that analyzes presales data patterns to predict full-season buying requirements, reducing overstock by 18% and improving inventory turnover.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Excel</span>
+                                <span class="project-tag">Predictive Modeling</span>
+                                <span class="project-tag">Retail Analytics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="contact-info">
                 <h3>GET IN TOUCH</h3>
                 <p>For professional inquiries or collaboration opportunities, please connect with me on LinkedIn or check back soon for the full portfolio launch.</p>
@@ -425,6 +686,28 @@
             const skillsSection = document.querySelector('.skills-section');
             if (skillsSection) {
                 observer.observe(skillsSection);
+            }
+            
+            // Portfolio items animation on scroll
+            const portfolioObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const portfolioItems = entry.target.querySelectorAll('.portfolio-item');
+                        portfolioItems.forEach((item, index) => {
+                            item.style.animation = 'none';
+                            item.offsetHeight; // Trigger reflow
+                            item.style.animation = `fadeInPortfolio 0.8s forwards ${index * 0.2}s`;
+                        });
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+            
+            // Observe the portfolio section
+            const portfolioSection = document.querySelector('.portfolio-section');
+            if (portfolioSection) {
+                portfolioObserver.observe(portfolioSection);
             }
         });
     </script>
