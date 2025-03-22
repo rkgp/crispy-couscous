@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jorrit van der Veen | Coming Soon</title>
+    <title>Jorrit van der Veen | Data Analyst</title>
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
@@ -66,51 +66,6 @@
             font-size: 1.1rem;
         }
         
-        /* Construction notice */
-        .under-construction {
-            margin-top: 40px;
-            padding: 20px;
-            border: 1px solid #000;
-            text-align: center;
-            position: relative;
-            background: repeating-linear-gradient(
-                45deg,
-                #fff,
-                #fff 10px,
-                #f9f9f9 10px,
-                #f9f9f9 20px
-            );
-        }
-        
-        .under-construction::before,
-        .under-construction::after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border: 1px solid #000;
-            background-color: #fff;
-        }
-        
-        .under-construction::before {
-            top: -10px;
-            left: -10px;
-            transform: rotate(45deg);
-        }
-        
-        .under-construction::after {
-            bottom: -10px;
-            right: -10px;
-            transform: rotate(45deg);
-        }
-        
-        .under-construction h2 {
-            font-weight: normal;
-            margin-top: 0;
-        }
-        
-        /* Progress bar removed */
-        
         /* Profile section */
         .profile-section {
             margin: 40px 0;
@@ -133,13 +88,12 @@
             overflow: hidden;
         }
         
-        
         .bio-text {
             border-left: 3px solid #000;
             padding-left: 20px;
         }
         
-        /* Skills */
+        /* Skills - ENHANCED WITH ANIMATIONS */
         .skills-section {
             margin: 30px 0;
         }
@@ -163,13 +117,37 @@
             border: 1px solid #000;
             padding: 5px 10px;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+            animation-delay: calc(var(--order) * 0.1s);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .skill-tag:hover {
             background-color: #000;
             color: #fff;
-            transform: translateY(-2px);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        
+        /* Pulse animation for focus */
+        .skill-tag:active {
+            animation: pulse 0.3s;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1.05); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
         }
         
         /* Experience */
@@ -193,6 +171,175 @@
         .experience-highlight h3 {
             margin-top: 0;
             font-weight: normal;
+        }
+        
+        /* Portfolio Section Styles */
+        .portfolio-section {
+            margin: 50px 0;
+            position: relative;
+        }
+        
+        .portfolio-section h3 {
+            font-weight: normal;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #000;
+        }
+        
+        .section-intro {
+            margin-bottom: 30px;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            border: 1px solid #000;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInPortfolio 0.8s forwards;
+            animation-delay: calc(var(--item-order) * 0.2s);
+        }
+        
+        @keyframes fadeInPortfolio {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .portfolio-preview {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .portfolio-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #000;
+        }
+        
+        .placeholder-text {
+            padding: 10px 15px;
+            border: 1px dashed #000;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .portfolio-details {
+            padding: 20px;
+        }
+        
+        .portfolio-details h4 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+        
+        .project-description {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .project-tag {
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border: 1px solid #000;
+            background-color: #fff;
+        }
+        
+        /* Company name styling */
+        .company-name {
+            font-size: 0.85rem;
+            margin: 0 0 12px 0;
+            display: inline-block;
+            border-bottom: 1px dashed #000;
+            padding-bottom: 2px;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Add animation for each portfolio item */
+        .portfolio-item:nth-child(1) {
+            --item-order: 1;
+        }
+        
+        .portfolio-item:nth-child(2) {
+            --item-order: 2;
+        }
+        
+        .portfolio-item:nth-child(3) {
+            --item-order: 3;
+        }
+        
+        .portfolio-item:nth-child(4) {
+            --item-order: 4;
+        }
+        
+        /* Responsive styles for portfolio section */
+        @media (min-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .portfolio-item {
+                margin-bottom: 20px;
+            }
+            
+            .portfolio-image {
+                height: 180px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .portfolio-section {
+                margin: 30px 0;
+            }
+            
+            .portfolio-image {
+                height: 150px;
+            }
+            
+            .portfolio-details {
+                padding: 15px;
+            }
+            
+            .project-description {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Remove arrow hover effect */
+        
+        .portfolio-item:hover .image-placeholder {
+            filter: brightness(0.9);
         }
         
         /* Contact */
@@ -370,10 +517,9 @@
         </header>
         
         <main>
-            <!-- Construction notice removed -->
             <div class="profile-section">
                 <div class="profile-image">
-                        <img src="https://raw.githubusercontent.com/rkgp/crispy-couscous/main/images/JvdV.jpeg" alt="Jorrit van der Veen" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="https://raw.githubusercontent.com/rkgp/crispy-couscous/main/images/JvdV.jpeg" alt="Jorrit van der Veen" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 
                 <div class="bio-text">
@@ -386,16 +532,17 @@
             <div class="skills-section">
                 <h3>CORE COMPETENCIES</h3>
                 <div class="skills">
-                    <span class="skill-tag">Power BI</span>
-                    <span class="skill-tag">Data Analysis</span>
-                    <span class="skill-tag">Excel</span>
-                    <span class="skill-tag">Business Intelligence</span>
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Process Improvement</span>
-                    <span class="skill-tag">Lean Six Sigma Green Belt</span>
-                    <span class="skill-tag">KPI Reporting</span>
-                    <span class="skill-tag">Google Analytics</span>
+                    <span class="skill-tag" style="--order: 1">Power BI</span>
+                    <span class="skill-tag" style="--order: 2">Data Analysis</span>
+                    <span class="skill-tag" style="--order: 3">Excel</span>
+                    <span class="skill-tag" style="--order: 4">Business Intelligence</span>
+                    <span class="skill-tag" style="--order: 5">KPI Reporting</span>
+                    <span class="skill-tag" style="--order: 6">Process Improvement</span>
+                    <span class="skill-tag" style="--order: 7">Python</span>
+                    <span class="skill-tag" style="--order: 8">AI</span>
+                    <span class="skill-tag" style="--order: 9">Machine Learning</span>
+                    <span class="skill-tag" style="--order: 9">LLM</span>
+                    <span class="skill-tag" style="--order: 10">Dataiku</span>
                 </div>
             </div>
             
@@ -410,9 +557,99 @@
                 </ul>
             </div>
             
+            <!-- PORTFOLIO SECTION - Added after Experience Highlight section -->
+            <div class="portfolio-section">
+                <h3>SELECTED PROJECTS</h3>
+                <p class="section-intro">A showcase of data analysis, visualization, and business intelligence projects I've completed.</p>
+                
+                <div class="portfolio-grid">
+                    <!-- Project 1 -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-preview">
+                            <div class="portfolio-image">
+                                <img src="https://raw.githubusercontent.com/rkgp/crispy-couscous/main/images/Prediction_ML.jpg" alt="Prediction ML" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="portfolio-details">
+                            <h4>Predicting Contract Approval Time</h4>
+                            <p class="company-name">KPN</p>
+                            <p class="project-description">Developed a machine learning model that predicts contract approval timelines by analyzing historical data and key variables, improving forecast accuracy and reducing unexpected delays in the procurement process.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">AI</span>
+                                <span class="project-tag">Machine Learning</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Dataiku</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-preview">
+                            <div class="portfolio-image">
+                                <img src="https://raw.githubusercontent.com/rkgp/crispy-couscous/main/images/Data_Extraction.jpg" alt="Data Extraction" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="portfolio-details">
+                            <h4>Python PDF Data Extraction Tool</h4>
+                            <p class="company-name">KPN</p>
+                            <p class="project-description">Built a Python tool using OCR and AI/LLM to automatically extract critical business data from thousands of contract documents (digital and scanned PDFs) cutting manual work by 95%.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">OCR</span>
+                                <span class="project-tag">AI</span>
+                                <span class="project-tag">LLM</span>
+                                <span class="project-tag">Process Automation</span>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-preview">
+                            <div class="portfolio-image">
+                                <img src="https://raw.githubusercontent.com/rkgp/crispy-couscous/main/images/Dashboard_Hub.jpg" alt="Dashboard Hub" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="portfolio-details">
+                            <h4>Procurement Analytics Hub</h4>
+                            <p class="company-name">KPN</p>
+                            <p class="project-description">Created an interactive dashboards environment, giving 200+ users insights into supplier spend analytics, category management, and contract compliance for €3+ billion spend across 5,000+ suppliers and 300+ categories.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Power BI</span>
+                                <span class="project-tag">Business Intelligence</span>
+                                <span class="project-tag">Data Visualization</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 (FIXED) -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-preview">
+                            <div class="portfolio-image">
+                                <img src="https://raw.githubusercontent.com/rkgp/crispy-couscous/main/images/Forecast_model.jpg" alt="Forecast Model" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="portfolio-details">
+                            <h4>Buying Forecast Model</h4>
+                            <p class="company-name">Tumble 'N Dry</p>
+                            <p class="project-description">Created an Excel-based forecasting model that analyzes presales data patterns to predict full-season buying requirements, reducing overstock and improving inventory turnover.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Excel</span>
+                                <span class="project-tag">Predictive Modeling</span>
+                                <span class="project-tag">Data Analytics</span>
+                                <span class="project-tag">Forecasting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="contact-info">
                 <h3>GET IN TOUCH</h3>
-                <p>For professional inquiries or collaboration opportunities, please connect with me on LinkedIn or check back soon for the full portfolio launch.</p>
+                <p>For professional inquiries or collaboration opportunities, please connect with me on LinkedIn.</p>
                 <div class="contact-links">
                     <a href="https://www.linkedin.com/in/jorrit-van-der-veen/" class="contact-link" target="_blank">CONNECT ON LINKEDIN</a>
                 </div>
@@ -423,5 +660,55 @@
             <p>&copy; 2025 | Jorrit van der Veen</p>
         </footer>
     </div>
+
+    <!-- Script for animated skills -->
+    <script>
+        // Intersection Observer to trigger animations when scrolled into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Reset animations when scrolled into view
+                        const skillTags = entry.target.querySelectorAll('.skill-tag');
+                        skillTags.forEach((tag, index) => {
+                            tag.style.animation = 'none';
+                            tag.offsetHeight; // Trigger reflow
+                            tag.style.animation = `fadeInUp 0.5s forwards ${index * 0.1}s`;
+                        });
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+            
+            // Observe the skills section
+            const skillsSection = document.querySelector('.skills-section');
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            }
+            
+            // Portfolio items animation on scroll
+            const portfolioObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const portfolioItems = entry.target.querySelectorAll('.portfolio-item');
+                        portfolioItems.forEach((item, index) => {
+                            item.style.animation = 'none';
+                            item.offsetHeight; // Trigger reflow
+                            item.style.animation = `fadeInPortfolio 0.8s forwards ${index * 0.2}s`;
+                        });
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+            
+            // Observe the portfolio section
+            const portfolioSection = document.querySelector('.portfolio-section');
+            if (portfolioSection) {
+                portfolioObserver.observe(portfolioSection);
+            }
+        });
+    </script>
 </body>
 </html>
