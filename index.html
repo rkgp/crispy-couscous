@@ -134,20 +134,7 @@
         .skill-tag:hover {
             background-color: #000;
             color: #fff;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             cursor: pointer;
-        }
-        
-        /* Pulse animation for focus */
-        .skill-tag:active {
-            animation: pulse 0.3s;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1.05); }
-            50% { transform: scale(0.95); }
-            100% { transform: scale(1); }
         }
         
         /* Experience */
@@ -202,8 +189,6 @@
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInPortfolio 0.8s forwards;
-            animation-delay: calc(var(--item-order) * 0.2s);
         }
         
         @keyframes fadeInPortfolio {
@@ -272,6 +257,13 @@
             padding: 3px 8px;
             border: 1px solid #000;
             background-color: #fff;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .project-tag:hover {
+            background-color: #000;
+            color: #fff;
+            cursor: pointer;
         }
         
         /* Company name styling */
@@ -282,23 +274,6 @@
             border-bottom: 1px dashed #000;
             padding-bottom: 2px;
             letter-spacing: 0.5px;
-        }
-        
-        /* Add animation for each portfolio item */
-        .portfolio-item:nth-child(1) {
-            --item-order: 1;
-        }
-        
-        .portfolio-item:nth-child(2) {
-            --item-order: 2;
-        }
-        
-        .portfolio-item:nth-child(3) {
-            --item-order: 3;
-        }
-        
-        .portfolio-item:nth-child(4) {
-            --item-order: 4;
         }
         
         /* Responsive styles for portfolio section */
@@ -342,18 +317,16 @@
             filter: brightness(0.9);
         }
         
-        /* Contact */
-        .contact-info {
-            margin-top: 40px;
-            padding: 20px;
-            border: 1px solid #000;
-            position: relative;
+        /* Contact Section - Updated to match other sections */
+        .contact-section {
+            margin: 30px 0;
         }
         
-        .contact-info h3 {
+        .contact-section h3 {
             font-weight: normal;
-            text-align: center;
-            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #000;
         }
         
         .contact-links {
@@ -482,7 +455,7 @@
             
             .skills-section,
             .experience-highlight,
-            .contact-info {
+            .contact-section {
                 margin: 20px 0;
             }
         }
@@ -513,7 +486,7 @@
             <div class="typewriter">
                 <h1>JORRIT VAN DER VEEN</h1>
             </div>
-            <p class="subtitle">DATA ANALYST | BUSINESS INTELLIGENCE SPECIALIST</p>
+            <p class="subtitle">DATA ANALYST | AI ENTHUSIAST</p>
         </header>
         
         <main>
@@ -523,9 +496,9 @@
                 </div>
                 
                 <div class="bio-text">
-                    <p>Experienced <strong>Procurement Data Analyst</strong> at KPN with expertise in business intelligence, data visualization, and process improvement.</p>
-                    
-                    <p>With a Master's degree in Transport & Supply Chain Management from VU University Amsterdam and a background in business analysis across multiple industries, I specialize in transforming complex data into actionable insights.</p>
+                    <p>Experienced <strong>Data Analyst</strong> at KPN (since 2020) focused on creating practical technical solutions to business challenges and opportunities. Combining analytics, programming and visualization with Excel, Python, and Power BI to transform complex data into tangible results.</p>
+                
+                    <p>Curious by nature and drawn to experimentation as a path to continuous improvement and innovation. Always seeking to expand technical capabilities and analytical thinking to address evolving business needs and emerging data challenges.</p>
                 </div>
             </div>
             
@@ -545,22 +518,11 @@
                     <span class="skill-tag" style="--order: 10">Dataiku</span>
                 </div>
             </div>
-            
-            <div class="experience-highlight">
-                <h3>PROCUREMENT DATA ANALYST AT KPN</h3>
-                <p>Since July 2020</p>
-                <ul>
-                    <li>Conducting in-depth analysis of procurement processes</li>
-                    <li>Developing custom Power BI dashboards</li>
-                    <li>Translating specifications into actionable projects</li>
-                    <li>Leading continuous process improvement initiatives</li>
-                </ul>
-            </div>
-            
+
             <!-- PORTFOLIO SECTION - Added after Experience Highlight section -->
             <div class="portfolio-section">
                 <h3>SELECTED PROJECTS</h3>
-                <p class="section-intro">A showcase of data analysis, visualization, and business intelligence projects I've completed.</p>
+                <p class="section-intro">A showcase of business impact through advanced analytics, AI solutions, and data-driven insights across diverse industries.</p>
                 
                 <div class="portfolio-grid">
                     <!-- Project 1 -->
@@ -573,7 +535,7 @@
                         <div class="portfolio-details">
                             <h4>Predicting Contract Approval Time</h4>
                             <p class="company-name">KPN</p>
-                            <p class="project-description">Developed a machine learning model that predicts contract approval timelines by analyzing historical data and key variables, improving forecast accuracy and reducing unexpected delays in the procurement process.</p>
+                            <p class="project-description">Developing a machine learning model that predicts contract approval timelines by analyzing historical data and key variables, improving forecast accuracy and reducing unexpected delays in the procurement process.</p>
                             <div class="project-tags">
                                 <span class="project-tag">AI</span>
                                 <span class="project-tag">Machine Learning</span>
@@ -593,7 +555,7 @@
                         <div class="portfolio-details">
                             <h4>Python PDF Data Extraction Tool</h4>
                             <p class="company-name">KPN</p>
-                            <p class="project-description">Built a Python tool using OCR and AI/LLM to automatically extract critical business data from thousands of contract documents (digital and scanned PDFs) cutting manual work by 95%.</p>
+                            <p class="project-description">Building a Python tool using OCR and AI/LLM to automatically extract critical business data from thousands of contract documents (digital and scanned PDFs) cutting manual work by 95%.</p>
                             <div class="project-tags">
                                 <span class="project-tag">Python</span>
                                 <span class="project-tag">OCR</span>
@@ -647,7 +609,8 @@
                 </div>
             </div>
             
-            <div class="contact-info">
+            <!-- Contact section - Updated to match other section styles -->
+            <div class="contact-section">
                 <h3>GET IN TOUCH</h3>
                 <p>For professional inquiries or collaboration opportunities, please connect with me on LinkedIn.</p>
                 <div class="contact-links">
@@ -661,11 +624,12 @@
         </footer>
     </div>
 
-    <!-- Script for animated skills -->
+    <!-- Script for animated skills - MODIFIED FOR FIXED PORTFOLIO ANIMATION -->
     <script>
         // Intersection Observer to trigger animations when scrolled into view
         document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
+            // Skills animation
+            const skillsObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         // Reset animations when scrolled into view
@@ -684,30 +648,27 @@
             // Observe the skills section
             const skillsSection = document.querySelector('.skills-section');
             if (skillsSection) {
-                observer.observe(skillsSection);
+                skillsObserver.observe(skillsSection);
             }
             
-            // Portfolio items animation on scroll
+            // FIXED: Portfolio items animation - observe each item individually
             const portfolioObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const portfolioItems = entry.target.querySelectorAll('.portfolio-item');
-                        portfolioItems.forEach((item, index) => {
-                            item.style.animation = 'none';
-                            item.offsetHeight; // Trigger reflow
-                            item.style.animation = `fadeInPortfolio 0.8s forwards ${index * 0.2}s`;
-                        });
+                        // Apply animation to the individual item that comes into view
+                        entry.target.style.animation = 'fadeInPortfolio 0.8s forwards';
                     }
-                });
+                }); 
             }, {
-                threshold: 0.2
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px' // Trigger animation slightly before item is fully visible
             });
             
-            // Observe the portfolio section
-            const portfolioSection = document.querySelector('.portfolio-section');
-            if (portfolioSection) {
-                portfolioObserver.observe(portfolioSection);
-            }
+            // Observe each portfolio item individually
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            portfolioItems.forEach(item => {
+                portfolioObserver.observe(item);
+            });
         });
     </script>
 </body>
